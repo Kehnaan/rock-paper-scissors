@@ -1,4 +1,3 @@
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -26,7 +25,7 @@ function getHumanChoice () {
         return userChoice;
     } else {
         console.log("Invalid choice! Enter rock, paper, or scissors.");
-        return getHumanChoice;
+        return getHumanChoice();
     }
 }
 
@@ -53,9 +52,25 @@ function playRound (humanChoice, computerChoice) {
     }
     console.log("Current Score - You: " + humanScore + ", Computer: " + computerScore);
 
-}  
+}
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame () {
 
-playRound(humanSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You have won the game");
+    } else if (computerScore > humanScore) {
+        console.log("Computer has won the game")
+    } else {
+        console.log("It is a tie game!")
+    }
+}
+
+playGame();
