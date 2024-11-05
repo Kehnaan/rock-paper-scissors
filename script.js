@@ -1,3 +1,7 @@
+
+let humanScore = 0;
+let computerScore = 0;
+
 // Get computers choice 
 function getComputerChoice () {
     const randomNumber = Math.floor(Math.random() * 3);
@@ -26,7 +30,32 @@ function getHumanChoice () {
     }
 }
 
+// function for playing a round
+function playRound (humanChoice, computerChoice) {
 
-// Test the function
-let humanChoice = getHumanChoice();
-console.log("You chose: " + humanChoice);
+    humanChoice = humanChoice.toLowerCase();
+
+    console.log("You chose: " + humanChoice);
+    console.log("Computer chose: " + computerChoice);
+
+    if (humanChoice ===  computerChoice) {
+        console.log("Tie!");
+    } else if ( 
+        (humanChoice === "rock" && computerChoice === "scissors") || 
+        (humanChoice === "paper" && computerChoice === "rock") || 
+        (humanChoice === "scissors" && computerChoice === "paper") 
+    ) {
+        console.log("You win!");
+        humanScore++;
+    } else {
+        console.log("Computer wins!");
+        computerScore++;
+    }
+    console.log("Current Score - You: " + humanScore + ", Computer: " + computerScore);
+
+}  
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
